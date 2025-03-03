@@ -1,0 +1,81 @@
+html{
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-weight: 400;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #7d4762;
+    color: #f3c7d6;
+    
+}
+nav{
+    height: 50vh;
+    display:flex;
+    flex-direction: row;
+    height:40px;
+    background-color: #522a33;
+    border-radius: 10px;
+}
+nav a{
+    width:8vw;
+    justify-content: space-evenly;
+    text-align: center;
+    margin: 8px;
+    text-decoration: none;
+    color:#f4b3c3;
+    border-radius: 10px;
+    transition: background-color 0.5s;
+}
+nav a:hover{
+    background-color:#6a2d3a;
+}
+
+
+img{
+    width:30vw;
+    height: 30vh;
+} 
+
+#red-ball{
+    background-color: #510633;
+    width: 20px;
+    height:20px;
+    border-radius: 50%;
+    position: absolute;
+    left:22%;
+    top:160px;
+    animation: ball-animation 3s infinite;
+}
+
+#image-1{
+    margin: 50px auto;
+    width: auto;
+    max-width: 50%;
+    height: auto;
+    display: flex;
+    position: inherit;
+}
+
+@keyframes ball-animation{
+    from {
+        margin: 0%;
+        background-color: #e989ae
+    }
+    25%{
+        background-color: #b46e8c
+    }
+    50%{
+        margin-left: 55%;
+        background-color: #db537c
+    }
+    75%{
+        background-color: #88203d
+    }
+    to {
+        margin: 0%;
+        background-color: #640832
+    }
+}
