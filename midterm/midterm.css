@@ -8,6 +8,30 @@
     src: url(titles.otf);
 }
 
+nav{
+    z-index: 500;
+    font-family: 'minecraft';
+    font-size: 24px;
+    height: 70px;
+    position: sticky;
+    top: 0%;
+    background-color: #420c33;
+}
+nav ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    list-style: none;
+    background-color: #420c33;
+}
+nav a{
+    transition: color .25s;
+}
+nav a:hover{
+    color:#1B998B;
+}
+
 body {
     font-family: 'minecraft', sans-serif;
     color: #ffffff;
