@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            background-color: darkslateblue;
+            border: 5px solid rgb(67, 147, 147);
+            height: 200px;
+            width: 200px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="name">Hello!</h1>
+    <button>Click Me!</button>
+    <div class="box"></div>
+    <script>
+        let box = document.querySelector('box');
+        box.addEventListener('click', changeColor);
+
+        function changeColor () {
+            box.style = "background-color: pink; border: 20px dotted purple";
+        }
+
+    console.log('Hello World!');
+    let btn = document.querySelector('button')
+    btn.addEventListener('click', updateName);
+    
+    function updateName() {
+        let name = document.querySelector('.name');
+        const input = prompt('Enter a New Name!');
+        name.textContent = input;
+    }
+    </script>
+</body>
+</html>
