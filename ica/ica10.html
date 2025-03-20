@@ -3,38 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .box {
-            background-color: darkslateblue;
-            border: 5px solid rgb(67, 147, 147);
-            height: 200px;
-            width: 200px;
-            margin-top: 20px;
-        }
-    </style>
+    <title>ica10</title>
+    <script> src="ica10.js" </script>
 </head>
 <body>
-    <h1 class="name">Hello!</h1>
-    <button>Click Me!</button>
-    <div class="box"></div>
-    <script>
-        let box = document.querySelector('box');
-        box.addEventListener('click', changeColor);
-
-        function changeColor () {
-            box.style = "background-color: pink; border: 20px dotted purple";
-        }
-
-    console.log('Hello World!');
-    let btn = document.querySelector('button')
-    btn.addEventListener('click', updateName);
+<div onmousedown="mDown(this)" onmouseup="mUp(this)"
+    style="background-color:#1a9189;width:90px;height:20px;padding:40px;">
+    Poke Me!</div>
     
-    function updateName() {
-        let name = document.querySelector('.name');
-        const input = prompt('Enter a New Name!');
-        name.textContent = input;
+    <script>
+    function mDown(obj) {
+      obj.style.backgroundColor = "#1ec5e5";
+      obj.innerHTML = "let me go :(";
+    }
+    
+    function mUp(obj) {
+      obj.style.backgroundColor="#1a9189";
+      obj.innerHTML="phew-thanks! :)";
     }
     </script>
-</body>
-</html>
+    
+    </body>
+    </html> 
