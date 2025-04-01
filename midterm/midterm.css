@@ -8,28 +8,38 @@
     src: url(titles.otf);
 }
 
-nav{
+nav {
     z-index: 500;
     font-family: 'minecraft';
     font-size: 24px;
-    height: 70px;
+    height: 70px; 
     position: sticky;
     top: 0%;
     background-color: #420c33;
+    display: flex; 
+    align-items: center; 
 }
-nav ul{
+
+nav ul {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
     text-align: center;
     list-style: none;
-    background-color: #420c33;
+    width: 100%;
+    height: 100%; 
+    padding: 0;
+    margin: 0;
 }
-nav a{
-    transition: color .25s;
+
+nav a {
+    transition: color 0.25s;
+    text-decoration: none;
 }
-nav a:hover{
-    color:#1B998B;
+
+nav a:hover {
+    color: #8b8b8b;
 }
 
 body {
@@ -40,59 +50,71 @@ body {
 html, body {
     width: 100%;
     height:100%;
+    margin: 0;
+    padding: 0;
   }
 
 .title {
     font-family: 'titles';
 }  
-  
-  body {
-      background: linear-gradient(-45deg, #00ff4c, #420c33, #19104c, #ffffff);
-      background-size: 200% 200%;
-      animation: gradient 10s ease infinite;
-  }
 
-  
-  @keyframes gradient {
-      0% {
-          background-position: 0% 50%;
-      }
-      50% {
-          background-position: 100% 50%;
-      }
-      100% {
-          background-position: 0% 50%;
-      }
-  }
+body {
+    background: linear-gradient(-45deg, #00ff4c, #420c33, #19104c, #ffffff);
+    background-size: 300% 300%;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    overflow-x: hidden;
+    animation: gradient 10s ease infinite;
+}
 
-  .list {
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.list {
     display: flex;
     gap: 8px;
     padding: 16px;
-  
     list-style: none;
-    overflow-x: scroll;
+    overflow-x: auto;
     scroll-snap-type: x mandatory;
-  }
-  
-  .item {
+    white-space: normal; 
+}
+
+.item {
     flex-shrink: 0;
-    width: 80%;
-    height: 80vh;
-  
+    width: 60%;
+    min-width: 250px;
+    height: auto;
     background-color: #00000079;
-  
     scroll-snap-align: center;
-  }
-  
-  .content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100%;
-  
+    justify-content: flex-start; 
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%; 
     font-family: 'minecraft';
     font-size: 15px;
     font-weight: bold;
-  }
+    word-wrap: break-word;
+    max-height: 100%; 
+}
