@@ -1,0 +1,52 @@
+:root {
+    --circle-size: 15vmin;
+  }
+  
+  body {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    
+    background-color: #b4f4ff;
+    color: #000000;
+  }
+  
+  div {
+    display: grid;
+    grid-template-columns: repeat(6, calc(var(--circle-size) / 2));
+    grid-template-rows: repeat(9, calc(var(--circle-size) / 2));
+  }
+  
+  span {
+    position: relative;
+    grid-column: var(--x, 1);
+    grid-row: var(--y, 1);
+    
+    animation: circleAnim 10s calc(-1s * var(--x) * var(--y)) ease-in-out infinite;
+  }
+  
+  span:after {
+    content: '';
+    
+    position: absolute;
+    top: calc(var(--circle-size) * -.25);
+    left: calc(var(--circle-size) * -.25);
+    
+    display: block;
+    width: var(--circle-size);
+    height: var(--circle-size);
+    border-radius: var(--circle-size);
+    
+    background: conic-gradient(from var(--r, 0deg), rgb(26, 48, 58), transparent 90%);
+    transform: rotate(-.01deg); // <-- pixel fix on window resize
+  }
+  
+  @keyframes circleAnim {
+    50% {
+      filter: blur(5px);
+      scale: 1.1;
+      rotate: -15deg;
+    }
+  }
+  
