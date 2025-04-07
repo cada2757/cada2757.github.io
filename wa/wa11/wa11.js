@@ -11,10 +11,9 @@ for(let i = 1; i < 6; i++){
     pictures.push(name);
 }
 
-/* Declaring the alternative text for each image file */
-const altText = "arbitrary alt text cuz validation sux";
+const altText = "alt text";
 
-/* Looping through images */
+
 for(let i = 0; i < pictures.length; i++){
     const newImage = document.createElement('img');
     newImage.setAttribute('src', pictures[i]);
@@ -25,7 +24,6 @@ for(let i = 0; i < pictures.length; i++){
     });
 }
 
-/* Wiring up the Darken/Lighten button */
 btn.addEventListener('click', () => {
     const brightness = btn.getAttribute('class');
     if (brightness === 'dark') {
