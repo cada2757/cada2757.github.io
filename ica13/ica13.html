@@ -67,20 +67,32 @@ class Ball {
     this.x += this.velX;
     this.y += this.velY;
   }
-  collisionDetect() {
-    for (const ball of balls) {
-      if (this !== ball) {
-        const dx = this.x - ball.x;
-        const dy = this.y - ball.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < this.size + ball.size) {
-          ball.color = this.color = randomRGB();
+  //giant shoutout to this thread https://stackoverflow.com/questions/2440377/javascript-collision-detection 
+  //ang HUGE shoutout to gabe johnson for already teaching aabb boxes <3 couldn't have done this without him
+
+  collisionDetect() {
+        for (const ball of balls) {
+          if (this !== ball) {
+            //checks if boxes hit >-<
+            if (
+              this.x + this.size > ball.x - ball.size &&
+              this.x - this.size < ball.x + ball.size &&
+              this.y + this.size > ball.y - ball.size &&
+              this.y - this.size < ball.y + ball.size
+            ) {
+              //switch velocities \(-_-)/
+              const tempVX = this.velX;
+              const tempVY = this.velY;
+              this.velX = ball.velX;
+              this.velY = ball.velY;
+              ball.velX = tempVX;
+              ball.velY = tempVY;
+            }
+          }
         }
       }
     }
-  }
-} 
 
 const balls = [];
 
