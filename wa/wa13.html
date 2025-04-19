@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <header>LOOK AT THE CONSOLE</header>
+    <header>LOOK AT THE CONSOLE RAHH</header>
     <script>
         //problems 1 & 2
 let text = 
@@ -19,18 +19,18 @@ let text =
 
 let obj = JSON.parse(text);
 
-console.log('uhh...here are all of the employees. kinda underpaid tho');
+console.log('here are the employees');
 for (const employee of obj.employees){
     console.log(employee);
 };
 
-console.log('and heres their company')
+console.log('they work at this company')
 console.log(obj);
 
 // problem 3
 obj['employees'].push({"name":"Anna" , "department":"Tech" , "designation":"Executive" , "salary":"25600" , "raiseEligable":"false"});
 
-console.log('oh wow look a new employee. an executive and she still doesnt make a living wage smh');
+console.log('ooo new employee so shiny so new');
 for (const employee of obj.employees){
     console.log(employee);
 };
@@ -41,32 +41,26 @@ for (const employee of obj.employees){
     totalSalary += parseInt(employee.salary);
 };
 
-console.log('how much do they make altogether? all five of them?');
+console.log('total salary');
 console.log(totalSalary);
-console.log('less than bezos makes in an hour...');
+console.log('thats not a lot for tech');
 
 // 5
-console.log('time for raises! im sure this wont be depressing!')
+console.log('raises yippee!!');
 
-for (let employee of obj.employees){
-    if(employee.raiseEligable === 'true'){
-        employee.salary = String(1.1*employee.salary);
-        employee.raiseEligable = 'false';
-    }
-};
+for (const employee of obj.employees) {
+    console.log(`${employee.name}: $${employee.salary}, raiseEligable: ${employee.raiseEligable}`);
+}
 
-for (const employee of obj.employees){
-    console.log(employee);
-};
 
 // 6
-console.log('ok so some of them are working from home, but in tech, who can really blame em');
+console.log('working from home');
 
 for (let employee of obj.employees){
     employee['wfh'] = 'false';
-    if(employee.name === 'Sam' || 'Anna'){
+    if (employee.name === 'Sam' || employee.name === 'Anna') {
         employee.wfh = 'true';
-    };
+    }
 };
 
 for (const employee of obj.employees){
