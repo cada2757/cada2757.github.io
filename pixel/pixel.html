@@ -2,64 +2,128 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Pixel Sort Tool</title>
+  <title>Image "Glitching"</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
-      font-family: sans-serif;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      height: 100vh;
+      background-color: #000000;
+      color: #eeeeee;
+    }
+    .panel {
+      width: 300px;
       padding: 1rem;
-      background: #b1b1b1;
+      background-color: #1e1e1e;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      overflow-y: auto;
+    }
+    h2 {
+      color: #ff00aa;
+      margin: 0;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: #2196f3;
+    }
+    input[type="checkbox"] {
+      transform: scale(1.2);
+      margin-right: 0.5rem;
+    }
+    select, input[type="number"], input[type="file"], button {
+      background-color: #333;
       color: #eee;
+      border: none;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 4px;
+    }
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+    }
+    .button-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+    button {
+      flex: 1;
+      cursor: pointer;
+    }
+    button.sort {
+      background-color: #ff00aa;
+      color: #fff;
+      font-weight: bold;
     }
     canvas {
+      flex: 1;
+      background: #000;
       display: block;
-      margin-top: 1rem;
-      max-width: 100%;
       image-rendering: pixelated;
-      border: 1px solid #444;
-    }
-    label, select, input {
-      margin: 0.5rem;
-    }
-    input[type="number"] {
-      width: 60px;
     }
   </style>
 </head>
 <body>
-  <h2>🧪 Pixel Sort Tool</h2>
+  <div class="panel">
+    <h2>Glitch an Image</h2>
 
-  <input type="file" id="upload" accept="image/*" />
-  
-  <label for="mode">Sort by:</label>
-  <select id="mode">
-    <option value="brightness">Brightness</option>
-    <option value="red">Red</option>
-    <option value="green">Green</option>
-    <option value="blue">Blue</option>
-    <option value="hue">Hue</option>
-    <option value="saturation">Saturation</option>
-    <option value="value">Value</option>
-  </select>
+    <label>
+      Upload Image:
+      <input type="file" id="upload" accept="image/*" />
+    </label>
 
-  <label>
-    Brightness:
-    <input type="number" id="minBright" value="0" min="0" max="255" />
-    -
-    <input type="number" id="maxBright" value="255" min="0" max="255" />
-  </label>
+    <label>
+      Sort By:
+      <select id="mode">
+        <option value="brightness">Brightness</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+        <option value="hue">Hue</option>
+        <option value="saturation">Saturation</option>
+        <option value="value">Value</option>
+      </select>
+    </label>
 
-  <label>
-    Block Size:
-    <input type="number" id="blockSize" value="1" min="1" max="200" />
-  </label>
+    <label>
+      Minimum Brightness
+      <input type="range" id="minBright" min="0" max="255" value="0" />
+    </label>
 
-  <label>
-    <input type="checkbox" id="horizontal" />
-    Horizontal Sort
-  </label>
+    <label>
+      Maximum Brightness
+      <input type="range" id="maxBright" min="0" max="255" value="255" />
+    </label>
 
-  <canvas id="canvas"></canvas>
+    <label>
+      Block Size
+      <input type="range" id="blockSize" min="1" max="200" value="1" />
+    </label>
 
+    <div class="checkbox-row">
+      <input type="checkbox" id="horizontal" />
+      <label for="horizontal" style="margin: 0;">Sort Horizontally</label>
+    </div>
+
+    <div class="button-row">
+      <button class="sort" onclick="pixelSort()">Sort!</button>
+      <button onclick="resetCanvas()">Reset</button>
+    </div>
+  </div>
+
+  <canvas id="canvas"></canvas> 
   <script>
     const upload = document.getElementById('upload');
     const canvas = document.getElementById('canvas');
@@ -71,6 +135,8 @@
     const horizontalCheckbox = document.getElementById('horizontal');
     const blockSizeInput = document.getElementById('blockSize');
 
+    let originalImage = null;
+//IM LOSING MY MIND
     upload.addEventListener('change', (e) => {
       const file = e.target.files[0];
       if (!file) return;
@@ -81,13 +147,15 @@
         canvas.width = img.width;
         canvas.height = img.height;
         ctx.drawImage(img, 0, 0);
-        pixelSort();
+        originalImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
       };
     });
-
-    [modeSelector, minBrightInput, maxBrightInput, horizontalCheckbox, blockSizeInput].forEach(el =>
-      el.addEventListener('input', pixelSort)
-    );
+//this took me so long and it was only 5 lines of code I'm so tired
+    function resetCanvas() {
+      if (originalImage) {
+        ctx.putImageData(originalImage, 0, 0);
+      }
+    }
 
     function getBrightness(r, g, b) {
       return (r + g + b) / 3;
@@ -113,7 +181,8 @@
 
       return [h, s, v];
     }
-
+//grrr GRAAAAHHHHH RAH RAH RGAH GRAH GRA GRAH GRAH GRAHHH DGHFDSHLFDGHLAFDHGLJDFHLAJHGFDL
+//freak on a leash by korn 2:36
     function pixelSort() {
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const { data, width, height } = imageData;
@@ -123,7 +192,8 @@
       const maxBright = parseInt(maxBrightInput.value);
       const isHorizontal = horizontalCheckbox.checked;
       const blockSize = parseInt(blockSizeInput.value) || 1;
-
+//what if i just didn't
+//just kidding this part was actually not bad i was being dramatic
       const getSortValue = (p) => {
         const bright = getBrightness(p.r, p.g, p.b);
         if (bright < minBright || bright > maxBright) return null;
@@ -138,7 +208,8 @@
           case 'value': return rgbToHsv(p.r, p.g, p.b)[2];
         }
       };
-
+//i need a nap i need some sleep i'm so tired what is going on djflkhadjahslkdjhkfjhkdajfkhad
+//it's just basic math it's just basic math it's fine it's just basic math
       const getPixel = (x, y) => {
         const i = (y * width + x) * 4;
         return { r: data[i], g: data[i + 1], b: data[i + 2], a: data[i + 3] };
@@ -151,7 +222,8 @@
         data[i + 2] = p.b;
         data[i + 3] = p.a;
       };
-
+//a love letter to w3 school i love w3 school <3 i cried so much waht the heck 
+//i don't wanna be an engineeeeeeer i want to be a carpenter and live in the WoooOOoOOOddDDDSssSS
       if (isHorizontal) {
         for (let y = 0; y < height; y++) {
           for (let start = 0; start < width; start += blockSize) {
@@ -198,6 +270,9 @@
 
       ctx.putImageData(imageData, 0, 0);
     }
+    // I would like to thank the academy, my mom, and substack
   </script>
 </body>
 </html>
+
+
