@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Click-to-Flip Cards</title>
+  <style>
+    body {
+      margin: 0;
+      background: rgb(58, 182, 93);
+      font-family: Poppins, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      position: relative;
+      width: 600px;
+      height: 400px;
+      perspective: 1200px;
+      margin-bottom: 30px;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    .card-wrapper {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+
+    #card1:checked ~ .cards .card1,
+    #card2:checked ~ .cards .card2,
+    #card3:checked ~ .cards .card3,
+    #card4:checked ~ .cards .card4,
+    #card5:checked ~ .cards .card5,
+    #card6:checked ~ .cards .card6,
+    #card7:checked ~ .cards .card7,
+    #card8:checked ~ .cards .card8,
+    #card9:checked ~ .cards .card9,
+    #card10:checked ~ .cards .card10 {
+      display: block;
+    }
+
+    .card-label {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: pointer;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+      position: relative;
+    }
+
+    #flip1:checked ~ .cards .card1 .card,
+    #flip2:checked ~ .cards .card2 .card,
+    #flip3:checked ~ .cards .card3 .card,
+    #flip4:checked ~ .cards .card4 .card,
+    #flip5:checked ~ .cards .card5 .card,
+    #flip6:checked ~ .cards .card6 .card,
+    #flip7:checked ~ .cards .card7 .card,
+    #flip8:checked ~ .cards .card8 .card,
+    #flip9:checked ~ .cards .card9 .card,
+    #flip10:checked ~ .cards .card10 .card {
+      transform: rotateX(180deg);
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .card-face {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      background: white;
+      box-shadow: 0 30px 30px rgba(0, 0, 0, 0.14);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .card-face.back {
+      background: #f0f0f0;
+      transform: rotateX(180deg);
+    }
+
+    .card-face.back > div {
+      transform: rotateX(180deg); /* ✅ Unflip the back text */
+    }
+
+    .title {
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .nav label {
+      padding: 10px 15px;
+      background: white;
+      border: 2px solid black;
+      border-radius: 5px;
+      margin: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .nav label:hover {
+      background: black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Radio Buttons for Navigation -->
+  <input type="radio" name="card" id="card1" checked>
+  <input type="radio" name="card" id="card2">
+  <input type="radio" name="card" id="card3">
+  <input type="radio" name="card" id="card4">
+  <input type="radio" name="card" id="card5">
+  <input type="radio" name="card" id="card6">
+  <input type="radio" name="card" id="card7">
+  <input type="radio" name="card" id="card8">
+  <input type="radio" name="card" id="card9">
+  <input type="radio" name="card" id="card10">
+
+  <!-- Flip Checkboxes -->
+  <input type="checkbox" id="flip1">
+  <input type="checkbox" id="flip2">
+  <input type="checkbox" id="flip3">
+  <input type="checkbox" id="flip4">
+  <input type="checkbox" id="flip5">
+  <input type="checkbox" id="flip6">
+  <input type="checkbox" id="flip7">
+  <input type="checkbox" id="flip8">
+  <input type="checkbox" id="flip9">
+  <input type="checkbox" id="flip10">
+
+  <div class="cards container">
+    <!-- CARD TEMPLATE (repeat for all cards) -->
+    <!-- Card 1 -->
+    <div class="card-wrapper card1">
+      <label for="flip1" class="card-label">
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-face front">
+              <div class="title">HTML</div>
+              <div class="subtitle">Structure the web</div>
+            </div>
+            <div class="card-face back">
+              <div>
+                <div class="title">HTML Info</div>
+                <div class="subtitle">Defines page structure with tags.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </label>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card-wrapper card2">
+      <label for="flip2" class="card-label">
+        <div class="card"><div class="card-inner">
+          <div class="card-face front"><div class="title">CSS</div><div class="subtitle">Style your site</div></div>
+          <div class="card-face back"><div><div class="title">CSS Info</div><div class="subtitle">Colors, layouts, animations</div></div></div>
+        </div></div>
+      </label>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card-wrapper card3">
+      <label for="flip3" class="card-label">
+        <div class="card"><div class="card-inner">
+          <div class="card-face front"><div class="title">JavaScript</div><div class="subtitle">Make it dynamic</div></div>
+          <div class="card-face back"><div><div class="title">JS Info</div><div class="subtitle">Handles logic and events</div></div></div>
+        </div></div>
+      </label>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card-wrapper card4">
+      <label for="flip4" class="card-label">
+        <div class="card"><div class="card-inner">
+          <div class="card-face front"><div class="title">React</div><div class="subtitle">UI Components</div></div>
+          <div class="card-face back"><div><div class="title">React Info</div><div class="subtitle">Reusable views with JSX</div></div></div>
+        </div></div>
+      </label>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card-wrapper card5">
+      <label for="flip5" class="card-label">
+        <div class="card"><div class="card-inner">
+          <div class="card-face front"><div class="title">Node.js</div><div class="subtitle">Server-side JS</div></div>
+          <div class="card-face back"><div><div class="title">Node Info</div><div class="subtitle">Run JS outside the browser</div></div></div>
+        </div></div>
+      </label>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card-wrapper card6">
+      <label for="flip6" class="card-label">
+        <div class="card"><div class="card-inner">
+          <div class="card-face front"><div class="title">Bootstrap</div><div class="subtitle">Responsive toolkit</div></div>
+          <div class="card-face back"><div><div class="title">Bootstrap Info</div><div class="subtitle">Prebuilt UI with grid</div></div></div>
+        </div></div>
+      </label>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="card-wrapper card7">
+      <label for="flip7" class="card-label">
+        <div class="card"><div class="card-inner">
+          <div class="card-face front"><div class="title">SASS</div><div class="subtitle">CSS with logic</div></div>
+          <div class="card-face back"><div><div class="title">SASS Info</div><div class="subtitle">Variables & nesting</div></div></div>
+        </div></div>
+      </label>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="card-wrapper card8">
+      <label for="flip8" class="card-label">
+        <div class="card"><div class="card-inner">
+          <div class="card-face front"><div class="title">UI/UX</div><div class="subtitle">Design systems</div></div>
+          <div class="card-face back"><div><div class="title">UX Info</div><div class="subtitle">Focus on user flow</div></div></div>
+        </div></div>
+      </label>
+    </div>
+
+    <!-- Card 9 -->
+    <div class="card-wrapper card9">
+      <label for="flip9" class="card-label">
+        <div class="card"><div class="card-inner">
+          <div class="card-face front"><div class="title">API</div><div class="subtitle">Connect apps</div></div>
+          <div class="card-face back"><div><div class="title">API Info</div><div class="subtitle">Exchange data</div></div></div>
+        </div></div>
+      </label>
+    </div>
+
+    <!-- Card 10 -->
+    <div class="card-wrapper card10">
+      <label for="flip10" class="card-label">
+        <div class="card"><div class="card-inner">
+          <div class="card-face front"><div class="title">Git</div><div class="subtitle">Version control</div></div>
+          <div class="card-face back"><div><div class="title">Git Info</div><div class="subtitle">Track and share code</div></div></div>
+        </div></div>
+      </label>
+    </div>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="nav">
+    <label for="card1">1</label>
+    <label for="card2">2</label>
+    <label for="card3">3</label>
+    <label for="card4">4</label>
+    <label for="card5">5</label>
+    <label for="card6">6</label>
+    <label for="card7">7</label>
+    <label for="card8">8</label>
+    <label for="card9">9</label>
+    <label for="card10">10</label>
+  </div>
+
+</body>
+</html>
