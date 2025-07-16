@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-family: sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    background-image: url("/img/chuck.jpg");
+    background-repeat: no-repeat;
+    background-size: 1500px 800px;
+
+  }
+
+  .box {
+    width: 250px;
+    padding: 20px;
+    border: 2px solid #333;
+    background-color: #ffffff;
+    text-align: center;
+    border-radius: 8px;
+    position: relative;
+    top: 10px;
+    right:-10px;
+}
+
+.box p {
+    color: #000000;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.boxA {
+    width: 250px;
+    padding: 20px;
+    border: 2px solid #924545;
+    background-color: #c56969;
+    text-align: center;
+    border-radius: 8px;
+    position: relative;
+    top: -150px;
+    right:-750px;
+}
+
+.boxA p {
+    color: #f8f8f8;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.boxB {
+    width: 250px;
+    padding: 20px;
+    border: 2px solid #45926a;
+    background-color: #6bac7c;
+    text-align: center;
+    border-radius: 8px;
+    position: relative;
+    top: -125px;
+    right:-750px;
+}
+
+.boxB p {
+    color: #f8f8f8;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.boxC {
+    width: 250px;
+    padding: 20px;
+    border: 2px solid #456092;
+    background-color: #6b89ac;
+    text-align: center;
+    border-radius: 8px;
+    position: relative;
+    top: -95px;
+    right:-750px;
+}
+
+.boxC p {
+    color: #f8f8f8;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
