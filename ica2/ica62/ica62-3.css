@@ -1,0 +1,36 @@
+#narrowScreen{
+    background-color: green;
+}
+@media only screen and (max-width: 599px) {
+
+    #narrowScreen{
+    background-color: purple;
+    }
+}
+#wideScreen{
+    background-color: lightblue;
+}
+@media only screen and (max-width: 799px) {
+
+    #wideScreen{
+    background-color: red;
+    }
+}
+#shortScreen{
+    background-color: turquoise;
+}
+@media only screen and (max-height: 499px) {
+
+    #shortScreen{
+    background-color: yellow;
+    }
+}
+#tallScreen{
+    background-color: orange;
+}
+@media only screen and (max-height: 799px) {
+
+    #tallScreen{
+    background-color: lavender;
+    }
+}
