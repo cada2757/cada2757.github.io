@@ -1,11 +1,11 @@
 @font-face {
-    font-family: 'titles';
-    src: url(titles.otf);
+    font-family: 'minecraft';
+    src: url(Minecraft.ttf);
 }
     
     body {
       margin: 0;
-      font-family: 'titles';
+      font-family: 'minecraft';
       color: white;
       display: flex;
       flex-direction: column;
@@ -58,16 +58,17 @@
       backface-visibility: hidden;
       border: 1px solid #fff;
       border-radius: 10px;
-      padding: 2rem;
+      padding: 1rem;
       box-sizing: border-box;
     }
     .card-front {
       background: #111;
+      font-size: 125%;
     }
     .card-back {
       background: #222;
       transform: rotateY(180deg);
-      font-size: 100%;
+      font-size: 110%;
     }
     .nav {
       margin: 2rem;
