@@ -1,11 +1,11 @@
 @font-face {
-    font-family: 'minecraft';
-    src: url(Minecraft.ttf);
+    font-family: 'unispace';
+    src: url(unispace.ttf);
 }
     
     body {
       margin: 0;
-      font-family: '';
+      font-family: 'unispace';
       color: white;
       display: flex;
       flex-direction: column;
@@ -63,12 +63,12 @@
     }
     .card-front {
       background: #111;
-      font-size: 125%;
+      font-size: 100%;
     }
     .card-back {
       background: #222;
       transform: rotateY(180deg);
-      font-size: 110%;
+      font-size: 80%;
     }
     .nav {
       margin: 2rem;
