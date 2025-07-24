@@ -33,17 +33,14 @@
 
     .card-wrapper {
       display: none;
-      margin-top: 2rem;
     }
     .card-wrapper:target {
       display: block;
     }
     .card-container {
       perspective: 1000px;
-      width: 600px;
-      height: 450px;
-      position: absolute;
-      top: 12mm;
+      width: 650px;
+      height: 500px;
     }
     .card {
       width: 100%;
