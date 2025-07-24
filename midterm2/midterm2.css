@@ -5,7 +5,7 @@
     
     body {
       margin: 0;
-      font-family: 'minecraft';
+      font-family: '';
       color: white;
       display: flex;
       flex-direction: column;
