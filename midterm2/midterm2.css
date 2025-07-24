@@ -61,6 +61,9 @@
       border-radius: 10px;
       padding: 1rem;
       box-sizing: border-box;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: center;
     }
     .card-front {
       background: #300d1a;
