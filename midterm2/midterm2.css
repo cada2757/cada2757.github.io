@@ -1,6 +1,11 @@
+@font-face {
+    font-family: 'minecraft';
+    src: url(Minecraft.ttf);
+}    
+    
     body {
       margin: 0;
-      font-family: sans-serif;
+      font-family: 'minecraft';
       background: black;
       color: white;
       display: flex;
