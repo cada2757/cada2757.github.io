@@ -1,11 +1,11 @@
 @font-face {
-    font-family: 'minecraft';
-    src: url(Minecraft.ttf);
-}    
+    font-family: 'titles';
+    src: url(titles.otf);
+}
     
     body {
       margin: 0;
-      font-family: 'minecraft';
+      font-family: 'titles';
       background: black;
       color: white;
       display: flex;
