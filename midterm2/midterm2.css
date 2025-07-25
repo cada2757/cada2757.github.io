@@ -80,7 +80,6 @@
       flex-direction: column;
       text-align: center;
       font-size: clamp(12px, 2.5vw, 20px);
-      overflow: auto;
     }
 
     .card-side * {
@@ -125,14 +124,14 @@
     }
 
     @media (max-width: 700px) {
-  .card-container {
-    width: 95vw;
-    height: 80vh;
-    max-height: none;
-  }
+      .card-container {
+      width: 95vw;
+      height: 80vh;
+      max-height: none;
+    }
 }
 
-    @media (max-width < 500px) {
+    @media (max-width > 500px) {
       .nav {
         grid-template-columns: repeat(5, 1fr);
         gap: 0.5rem;
