@@ -48,7 +48,7 @@
 
     .card-container {
       perspective: 1000px;
-      width: 650px;
+      width: 800px;
       height: 500px;
       cursor: pointer;
     }
@@ -94,8 +94,6 @@
 
     .nav {
       margin: 1rem;
-      display: grid;
-      grid-template-columns: repeat(5, auto);
       gap: 0.5rem;
       justify-content: center;
     }
@@ -116,7 +114,7 @@
 
     .alef {
       font-family: 'alef';
-      font-size: 100%;
+      font-size: 125%;
     }
 
     @media (max-width: 700px) {
@@ -126,15 +124,3 @@
       max-height: none;
     }
 }
-
-    @media (max-width > 500px) {
-      .nav {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 0.5rem;
-      }
-
-      .nav a {
-        padding: 0.5rem;
-        font-size: 0.9rem;
-      }
-    }
