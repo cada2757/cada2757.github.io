@@ -120,7 +120,7 @@
       font-size: 135%;
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 800px) {
       .card-container {
       width: 95vw;
       height: 80vh;
@@ -128,7 +128,7 @@
     }
   }
 
-    @media (max-width: 700px) {
+    @media (max-width: 800px) {
       .nav {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
