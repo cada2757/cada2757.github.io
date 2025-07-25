@@ -132,7 +132,7 @@
   }
 }
 
-    @media (max-width: 500px) {
+    @media (max-width < 500px) {
       .nav {
         grid-template-columns: repeat(5, 1fr);
         gap: 0.5rem;
