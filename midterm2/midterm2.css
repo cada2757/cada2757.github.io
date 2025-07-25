@@ -81,6 +81,7 @@
       flex-direction: column;
       text-align: center;
       font-size: clamp(12px, 2.5vw, 20px);
+      overflow: auto;
     }
 
     .card-side * {
@@ -125,12 +126,12 @@
     }
 
     @media (max-width: 700px) {
-      .card-container {
-        width: 90vw;
-        height: 70vw;
-        max-height: 400px;
-      }
-    }
+  .card-container {
+    width: 95vw;
+    height: 80vh; /* taller on small screens */
+    max-height: none;
+  }
+}
 
     @media (min-width: 500px) {
       .nav {
