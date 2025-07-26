@@ -146,3 +146,19 @@
   margin-top: 0.5rem;
   line-height: 1.2;
 }
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotateY(0deg);
+  }  
+  25% {
+    transform: rotateY(-3deg);
+  }
+  75% {
+    transform: rotateY(3deg);
+  }
+}
+
+.card-container:hover .card:not(.flipped) {
+  animation: wiggle 0.4s ease;
+}
