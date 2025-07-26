@@ -147,7 +147,9 @@
   line-height: 1.2;
 }
 
-@keyframes wiggle {
+
+
+/* @keyframes wiggle {
   0%, 100% {
     transform: rotateY(0deg);
   }  
@@ -162,3 +164,4 @@
 .card-container:hover .card:not(.flipped) {
   animation: wiggle 0.4s ease;
 }
+idk how to get it to not be weird when going from the back to the front */
