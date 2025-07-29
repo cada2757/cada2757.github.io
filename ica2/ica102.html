@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ica102</title>
+</head>
+<body>
+<div onmousedown="mDown(this)" onmouseup="mUp(this)"
+    style="background-color:#82cfca;width:90px;height:20px;padding:40px;">
+    Poke Me!</div>
+    
+    <script>
+    function mDown(obj) {
+      obj.style.backgroundColor = "#1ec5e5";
+      obj.innerHTML = "let me go!";
+    }
+    
+    function mUp(obj) {
+      obj.style.backgroundColor="#1a9189";
+      obj.innerHTML="thank you :)";
+    }
+    </script>
+    
+    </body>
+    </html> 
