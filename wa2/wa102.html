@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wa102</title>
+    <link rel="stylesheet" href="wa102.css">
+    <link rel="stylesheet" href="https://use.typekit.net/una7xwr.css">
+</head>
+
+  <body>
+    <div>
+      <label for="customname">Enter Custom Name:</label>
+      <input id="customname" type="text" placeholder="">
+    </div>
+    <div>
+      <label for="us">US</label><input id="us" type="radio" name="ukus" value="us" checked>
+      <label for="uk">UK</label><input id="uk" type="radio" name="ukus" value="uk">
+    </div>
+    <div>
+      <button id="randomise">Generate Random Story</button>
+    </div>
+    <p id="story"></p>
+    <script>
+        const customName = document.getElementById('customname');
+        const randomise = document.getElementById('randomise');
+        const story = document.getElementById('story');
+  
+        var storyText = 'It was 99 degrees, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Mr. Green saw the whole thing, but was not surprised — :insertx: had always been strange, and it was a hot day.';
+        var insertX = ['Miss Scarlett','Colonel Mustard','Professor Plum'];
+        var insertY = ['the billiard room','the conservatory','the study'];
+        var insertZ = ['got bludgeoned by a candlestick','got stabbed by a dagger','got bashed over the head with a lead pipe'];
+  
+        function randomValueFromArray(array){
+        const random = Math.floor(Math.random()*array.length);
+        return array[random];
+        }
+  
+        randomise.addEventListener('click', function() {
+          var newStory = storyText;
+          var xItem = randomValueFromArray(insertX);
+          var yItem = randomValueFromArray(insertY);
+          var zItem = randomValueFromArray(insertZ);
+          newStory = newStory.replace(':insertx:',xItem).replace(':insertx:',xItem).replace(':inserty:',yItem).replace(':insertz:',zItem);
+  
+            console.log(newStory)
+  
+          if(customName.value != '') {
+              var name = customName.value;
+              newStory =  newStory.replace('Nick',name);
+          }
+  
+          if(document.getElementById("uk").checked) {
+              var temperature =  Math.round((94-32)/1.8).toString();
+              newStory =  newStory.replace('99',temperature);
+          }
+  
+          story.textContent = newStory;
+          story.style.visibility = 'visible';
+          });  
+    </script>
+  </body>
+</html>
