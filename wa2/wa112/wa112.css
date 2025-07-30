@@ -1,0 +1,61 @@
+h1 {
+    font-family: "bookmania", serif;
+    font-size: 48px;
+    text-align: center;
+  }
+  
+  body {
+    width: 640px;
+    margin: 0 auto;
+    background-color: #1e2738;
+    color: #b4d5f0;
+    
+  }
+  
+  .full-img {
+    position: relative;
+    display: block;
+    margin-top: 50px;
+    width: 640px;
+    height: 480px;
+    background-color: rgb(1, 1, 0);
+  }
+  
+  .full-img img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 640px;
+    height: 480px;
+    background-color: rgba(0,0,0,0);
+  }
+  
+  button {
+    font-family: "bookmania", serif;
+    color: #D8F3DC;
+    border: 0;
+    background: rgba(8,28,21,0.4);
+    border: 1px solid #D8F3DC;
+    border-radius: 5px;
+    position: absolute;
+    cursor: pointer;
+    top: 2px;
+    left: 2px;
+    margin: 5px;
+  }
+  
+  .thumb-bar{
+    display: flex;
+  }
+  
+  .thumb-bar img {
+    display: block;
+    width: 20%;
+    float: left;
+    cursor: pointer;
+  }
