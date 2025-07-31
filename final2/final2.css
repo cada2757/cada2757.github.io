@@ -1,0 +1,115 @@
+    body {
+      font-family: sans-serif;
+      background: #111;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .output {
+      font-size: 32px;
+      margin: 10px;
+      font-weight: bold;
+    }
+
+    .display {
+      font-size: 22px;
+      margin: 10px;
+    }
+
+    .morse-button {
+      width: 150px;
+      height: 150px;
+      background: #444;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin: 15px;
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+      transition: box-shadow 0.2s ease, transform 0.1s ease;
+      user-select: none;
+    }
+
+    .morse-button:active {
+      box-shadow: none;
+      transform: scale(0.97);
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      padding: 10px 16px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #444;
+      color: white;
+      transition: background 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #666;
+    }
+
+    button.reset {
+      background: #ff4444;
+    }
+
+    .key {
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .key pre {
+      background: #222;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .feedback {
+  font-size: 18px;
+  margin: 10px;
+  color: #aaa;
+}
+
+@media (max-width: 600px) {
+  .morse-button {
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+  }
+
+  .output {
+    font-size: 24px;
+  }
+
+  .display, .feedback {
+    font-size: 16px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .key pre {
+    font-size: 14px;
+  }
+}

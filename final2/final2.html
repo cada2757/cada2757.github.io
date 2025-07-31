@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morse Code Phone Number</title>
+    <link rel="stylesheet" href="final2.css">
+</head>
+<body>
+  <h1>Morse Code Phone Entry</h1>
+
+  <div class="output">Phone #: <span id="phone-output"> </span></div>
+
+  <div class="display">Current Code: <span id="current-code"> </span></div>
+  <div class="morse-button" id="morse-btn">Press</div>
+  <div class="feedback">Press Type: <span id="press-feedback"> </span></div>
+
+  <div class="controls">
+    <button onclick="addNumber()">Add Number</button>
+    <button onclick="deleteLast()">Delete Number</button>
+    <button class="reset" onclick="resetAll()">Reset</button>
+  </div>
+
+  <div class="key">
+    <h3>Morse Code Key</h3>
+    <pre>
+0 → ─ ─ ─ ─ ─
+1 → · ─ ─ ─ ─
+2 → · · ─ ─ ─
+3 → · · · ─ ─
+4 → · · · · ─
+5 → · · · · ·
+6 → ─ · · · ·
+7 → ─ ─ · · ·
+8 → ─ ─ ─ · ·
+9 → ─ ─ ─ ─ ·
+    </pre>
+<script src="final2.js"></script>
+</body>
+</html>
