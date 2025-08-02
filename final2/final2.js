@@ -30,7 +30,7 @@ morseBtn.addEventListener("mouseup", () => {
   const duration = Date.now() - pressStart;
   morseBtn.classList.remove("pressed");
 
-  if (duration < 1000) {
+  if (duration < 300) {
     currentCode += ".";
     currentCodeEl.textContent += "·";
     pressFeedbackEl.textContent = "Dot (·)";
