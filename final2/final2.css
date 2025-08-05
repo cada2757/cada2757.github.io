@@ -80,14 +80,14 @@
     .key pre {
       background: #222;
       padding: 10px;
-      border-radius: 10px;
+      border-radius: 10px
     }
 
     .feedback {
-  font-size: 18px;
-  margin: 10px;
-  color: #aaa;
-}
+    font-size: 18px;
+    margin: 10px;
+    color: #aaa;
+    }
 
 @media (max-width: 600px) {
   .morse-button {
