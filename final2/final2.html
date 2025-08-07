@@ -1,41 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morse Code Phone Number</title>
-    <link rel="stylesheet" href="final2.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Morse Code Phone Number</title>
+  <link rel="stylesheet" href="final2.css" />
 </head>
 <body>
   <h1>Morse Code Phone Entry</h1>
 
-  <div class="output">Phone #: <span id="phone-output"> </span></div>
-
-  <div class="display">Current Code: <span id="current-code"> </span></div>
+  <div class="output">Phone #: <span id="phone-output"></span></div>
+  <div class="display">Current Code: <span id="current-code"></span></div>
   <div class="morse-button" id="morse-btn">Press</div>
-  <div class="feedback">Press Type: <span id="press-feedback"> </span></div>
+  <div class="feedback">Press Type: <span id="press-feedback"></span></div>
 
-  <div class="controls">
-    <button onclick="addNumber()">Add Number</button>
-    <button onclick="deleteLast()">Delete Number</button>
-    <button class="reset" onclick="resetAll()">Reset</button>
-  </div>
+<div class="controls">
+  <button onclick="submitLetter()">Submit Letter</button>
+  <button onclick="submitWord()">Submit Word</button>
+  <button onclick="deleteLast()">Delete Number</button>
+  <button onclick="deleteLastSymbol()">Delete Last Dot/Dash</button>
+  <button class="reset" onclick="resetAll()">Reset All</button>
+</div>
 
-  <div class="key">
-    <h3>Morse Code Key</h3>
+<div class="word-buffer">Typed Letters: <span id="word-buffer"></span></div>
+
+<div id="congrats-popup" class="popup hidden">
+  Congrats! I'm selling your number!
+</div>
+
+
+  <div class="key hidden" id="key">
+    <h3>Morse Code Alphabet</h3>
     <pre>
-0 → ─ ─ ─ ─ ─
-1 → · ─ ─ ─ ─
-2 → · · ─ ─ ─
-3 → · · · ─ ─
-4 → · · · · ─
-5 → · · · · ·
-6 → ─ · · · ·
-7 → ─ ─ · · ·
-8 → ─ ─ ─ · ·
-9 → ─ ─ ─ ─ ·
+A → ·−       N → −·
+B → −···     O → −−−
+C → −·−·     P → ·−−·
+D → −··      Q → −−·−
+E → ·        R → ·−·
+F → ··−·     S → ···
+G → −−·      T → −
+H → ····     U → ··−
+I → ··       V → ···−
+J → ·−−−     W → ·−−
+K → −·−      X → −··−
+L → ·−··     Y → −·−−
+M → −−       Z → −−··
     </pre>
-    </div>
-<script src="final2.js"></script>
+  </div>
+  <script src="final2.js"></script>
 </body>
 </html>
