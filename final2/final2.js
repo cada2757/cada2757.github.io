@@ -12,7 +12,7 @@ let wordBuffer = [];
 let phoneNumber = "";
 let popupShown = false;
 
-// Morse mappings (letters)
+// Morse mappings (for letters)
 const morseToLetter = {
   ".-": "a", "-...": "b", "-.-.": "c", "-..": "d", ".": "e",
   "..-.": "f", "--.": "g", "....": "h", "..": "i", ".---": "j",
