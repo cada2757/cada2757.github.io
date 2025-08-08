@@ -20,6 +20,7 @@
   <button onclick="deleteLast()">Delete Number</button>
   <button onclick="deleteLastSymbol()">Delete Last Dot/Dash</button>
   <button class="reset" onclick="resetAll()">Reset All</button>
+  <button id="delete-buffer-btn" onclick="deleteLastLetterInBuffer()" disabled>Delete Last Typed Number</button>
 </div>
 
 <div class="word-buffer">Typed Letters: <span id="word-buffer"></span></div>
@@ -27,7 +28,6 @@
 <div id="congrats-popup" class="popup hidden">
   Congrats! I'm selling your number!
 </div>
-
 
   <div class="key hidden" id="key">
     <h3>Morse Code Alphabet</h3>
@@ -47,6 +47,11 @@ L → ·−··     Y → −·−−
 M → −−       Z → −−··
     </pre>
   </div>
+
+<div id="help-hint" class="help-hint">
+  Need help? Type <code>...././.-../.--.</code>
+</div>
+
   <script src="final2.js"></script>
 </body>
 </html>

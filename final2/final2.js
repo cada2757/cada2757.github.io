@@ -10,7 +10,9 @@ let pressStart = 0;
 let currentCode = "";
 let wordBuffer = [];
 let phoneNumber = "";
+let popupShown = false;
 
+// Morse mappings (letters)
 const morseToLetter = {
   ".-": "a", "-...": "b", "-.-.": "c", "-..": "d", ".": "e",
   "..-.": "f", "--.": "g", "....": "h", "..": "i", ".---": "j",
@@ -20,19 +22,18 @@ const morseToLetter = {
   "--..": "z"
 };
 
+// Morse mapping (#)
+const morseToNumber = {
+  "-----": "0", ".----": "1", "..---": "2", "...--": "3", "....-": "4",
+  ".....": "5", "-....": "6", "--...": "7", "---..": "8", "----.": "9"
+};
+
 const wordToDigit = {
   "zero": "0", "one": "1", "two": "2", "three": "3", "four": "4",
   "five": "5", "six": "6", "seven": "7", "eight": "8", "nine": "9"
 };
 
-morseBtn.addEventListener("mousedown", () => {
-  pressStart = Date.now();
-  morseBtn.classList.add("pressed");
-  pressFeedbackEl.textContent = "Holding...";
-});
-
-morseBtn.addEventListener("mouseup", () => {
-  const duration = Date.now() - pressStart;
+function handlePressEnd(duration) {
   morseBtn.classList.remove("pressed");
 
   if (duration < 300) {
@@ -44,17 +45,46 @@ morseBtn.addEventListener("mouseup", () => {
     currentCodeEl.textContent += "−";
     pressFeedbackEl.textContent = "Dash (−)";
   }
+}
+
+// Mousey
+morseBtn.addEventListener("mousedown", () => {
+  pressStart = Date.now();
+  morseBtn.classList.add("pressed");
+  pressFeedbackEl.textContent = "Holding...";
+});
+morseBtn.addEventListener("mouseup", () => {
+  handlePressEnd(Date.now() - pressStart);
+});
+
+// Updates for mobile
+morseBtn.addEventListener("touchstart", e => {
+  e.preventDefault();
+  pressStart = Date.now();
+  morseBtn.classList.add("pressed");
+  pressFeedbackEl.textContent = "Holding...";
+});
+morseBtn.addEventListener("touchend", e => {
+  e.preventDefault();
+  handlePressEnd(Date.now() - pressStart);
 });
 
 function submitLetter() {
   if (!currentCode) return;
 
-  const letter = morseToLetter[currentCode];
+  let letter = morseToLetter[currentCode];
+  let number = morseToNumber[currentCode];
+
   if (letter) {
     wordBuffer.push(letter);
     updateWordBuffer();
+  } else if (number) {
+    if (phoneNumber.length < 10) {
+      phoneNumber += number;
+      phoneOutputEl.textContent = phoneNumber;
+    }
   } else {
-    alert("Invalid Morse code for letter.");
+    alert("Invalid Morse code for letter or number.");
   }
 
   currentCode = "";
@@ -71,14 +101,17 @@ function submitWord() {
     phoneNumber = phoneNumber.slice(0, -1);
     phoneOutputEl.textContent = phoneNumber;
   } else if (wordToDigit[word]) {
-    phoneNumber += wordToDigit[word];
-    phoneOutputEl.textContent = phoneNumber;
+    if (phoneNumber.length < 10) {
+      phoneNumber += wordToDigit[word];
+      phoneOutputEl.textContent = phoneNumber;
+    }
   } else {
     alert(`"${word}" is not a valid command or number word.`);
   }
 
-  if (phoneNumber.length >= 10) {
+  if (phoneNumber.length >= 10 && !popupShown) {
     popupEl.classList.remove("hidden");
+    popupShown = true;
   }
 
   wordBuffer = [];
@@ -87,6 +120,8 @@ function submitWord() {
 
 function updateWordBuffer() {
   wordBufferEl.textContent = wordBuffer.join("");
+  const deleteBtn = document.getElementById("delete-buffer-btn");
+  deleteBtn.disabled = wordBuffer.length === 0;
 }
 
 function deleteLast() {
@@ -99,14 +134,29 @@ function deleteLastSymbol() {
   currentCodeEl.textContent = currentCodeEl.textContent.slice(0, -1);
 }
 
+function deleteLastLetterInBuffer() {
+  if (wordBuffer.length > 0) {
+    wordBuffer.pop();
+    updateWordBuffer();
+  }
+}
+
 function resetAll() {
-  currentCode = "";
-  wordBuffer = [];
-  phoneNumber = "";
-  currentCodeEl.textContent = "";
-  phoneOutputEl.textContent = "";
-  wordBufferEl.textContent = "";
-  pressFeedbackEl.textContent = "";
-  keyEl.classList.add("hidden");
-  popupEl.classList.add("hidden");
+  if (confirm("Clicking this button will get rid of all your numbers, are you sure?")) {
+    const cheatSheetWasOpen = !keyEl.classList.contains("hidden");
+
+    currentCode = "";
+    wordBuffer = [];
+    phoneNumber = "";
+    currentCodeEl.textContent = "";
+    phoneOutputEl.textContent = "";
+    wordBufferEl.textContent = "";
+    pressFeedbackEl.textContent = "";
+    popupEl.classList.add("hidden");
+    popupShown = false;
+
+    if (!cheatSheetWasOpen) {
+      keyEl.classList.add("hidden");
+    }
+  }
 }
